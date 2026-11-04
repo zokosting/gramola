@@ -5,7 +5,7 @@
   "lang": "es",
   "start_url": "/m/?pwa=1",
   "scope": "/m/",
-  "display": "fullscreen",
+  "display": "standalone",
   "display_override": ["fullscreen", "standalone"],
   "orientation": "portrait",
   "background_color": "#f3f2f2",
