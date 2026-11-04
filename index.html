@@ -4,31 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargando Gramola...</title>
-    <style>
-        body { 
-            background-color: #121212; 
-            color: #ffffff; 
-            font-family: sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-        }
-    </style>
 </head>
 <body>
-    <p>Cargando Gramola...</p>
-
     <script>
         // Detecta si el dispositivo es móvil o tablet
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         // Redirige a la ruta correspondiente
         if (isMobile) {
-            window.location.replace("/m/");
+            window.location.replace("https://karaoke-61ys.onrender.com/app/m");
         } else {
-            window.location.replace("/app/");
+            window.location.replace("https://karaoke-61ys.onrender.com/app/");
         }
     </script>
 </body>
