@@ -381,11 +381,17 @@ async function handleHttp(req, res) {
     res.writeHead(301, { location: '/' });
     return res.end();
   }
-  // La dirección antigua del micro (/m) lleva al subdominio micro. del mismo dominio
-  if (!MICRO_HOST.test(host) && (url.pathname === '/m' || url.pathname === '/m/') && req.method === 'GET') {
-    res.writeHead(301, { location: 'https://micro.' + host.replace(/^www\./, '').replace(/:\d+$/, '') + '/' + url.search });
-    return res.end();
-  }
+// Servir la app del micro directamente en la ruta /m del dominio principal
+if (!MICRO_HOST.test(host) && (url.pathname === '/m' || url.pathname.startsWith('/m/')) && (req.method === 'GET' || req.method === 'HEAD')) {
+    let subPath = url.pathname.substring(2); // Quita el prefijo '/m'
+    if (subPath === '' || subPath === '/') subPath = '/index.html';
+    const targetFile = '/m' + subPath;
+    
+    // Comprueba que el archivo solicitado está en la lista de archivos permitidos del micro
+    if (Object.values(MICRO_FILES).includes(targetFile)) {
+        return serveStatic(req, res, targetFile);
+    }
+}
   if (req.method === 'POST' && url.pathname === '/api/tv-pass') {
     let body;
     try { body = await readJsonBody(req, 1024); } catch { return json(res, 400, { error: 'json' }); }
