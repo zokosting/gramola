@@ -72,7 +72,7 @@ hr { border: 0; border-top: 2px solid var(--ink); width: 100%; margin: 14px 0; }
 
 /* Cantando: solo el micro */
 .screen.sing { padding-bottom: 0; overflow: hidden; }
-.mic { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: center; margin: 0 -22px; transform: rotate(180deg); }
+.mic { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: center; margin: 0 -22px; transform: rotate(0deg); }
 .mic img { width: min(100%, 62dvh); display: block; transition: transform .08s linear; transform-origin: 50% 100%; }
 /* Rejilla del cuerpo = vúmetro (medido sobre la imagen 753×1175: x 38,5–61,8 %, y 59–85 %) */
 .vu { position: absolute; bottom: 0; left: 50%; width: min(100%, 62dvh); transform: translateX(-50%); aspect-ratio: 753 / 1175; pointer-events: none; }

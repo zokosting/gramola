@@ -1857,6 +1857,29 @@ window.GR = (() => {
   const unlock = () => { ensureCtx(); if (menuOn && menuEl && menuEl.paused && !prev) menuEl.play().catch(() => {}); };
   addEventListener('keydown', unlock); addEventListener('pointerdown', unlock);
 
+  // --- Añadido para abrir el menú de pausa con ENTER o CLIC ---
+  addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+      const c = g();
+      // Si estamos jugando una canción y no está pausada
+      if (c && c.state.screen === 'sing' && !c.state.paused) {
+        e.preventDefault();
+        c.act('menu'); // Esta es la función interna que abre el menú de Pausa
+      }
+    }
+  }, true);
+
+  addEventListener('pointerdown', (e) => {
+    const c = g();
+    // Si estamos jugando una canción, no está pausada y no hemos hecho clic en un botón interactivo
+    if (c && c.state.screen === 'sing' && !c.state.paused) {
+      if (e.target.tagName !== 'BUTTON' && !e.target.closest('button')) {
+        c.act('menu'); // Abre el menú de Pausa
+      }
+    }
+  });
+  // -----------------------------------------------------------
+
   // ------------------------------------------------------------------ cada fotograma
   let lastTr = null, lastRed = false, lastStep = null, lastScr2 = null;
   function transitions(s) {
