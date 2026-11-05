@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargando Gramola...</title>
+
 </head>
 <body>
     <script>
-        // Detecta si el dispositivo es móvil o tablet
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const ua = navigator.userAgent;
+        const isIPad = /iPad/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        const isAndroidTablet = /Android/i.test(ua) && !/Mobile/i.test(ua);
+        const isTablet = isIPad || isAndroidTablet;
 
-        // Redirige a la ruta correspondiente
-        if (isMobile) {
-            window.location.replace("https://karaoke-61ys.onrender.com/m");
-        } else {
-            window.location.replace("https://karaoke-61ys.onrender.com/app/");
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) || isTablet;
+
+        const isLandscape = window.innerWidth > window.innerHeight;
+
+
+        if (isTablet && isLandscape) {
+            window.location.replace("/app/");
+        } 
+        else if (isMobile) {
+            window.location.replace("/m/");
+        } 
+        else {
+            window.location.replace("/app/");
         }
     </script>
 </body>
