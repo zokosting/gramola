@@ -8,7 +8,7 @@ node_modules/
 deploy/deploy.env
 docs/PRIVADO.local.md
 # Canciones: nunca en el repo (tienen derechos); se suben al servidor aparte
-/web/songs/
+# /web/songs/
 .perfil*/
 # Diseño: las capturas de referencia subidas a la herramienta no se versionan
 /diseno/uploads/
