@@ -94,8 +94,8 @@ escaneas el QR, eliges tu color y cantas. Gramola escucha el tono de cada voz y 
 ## 🧱 Cómo está hecho
 
 ```
- Móviles /m (web, PWA) ──WebSocket──► Servidor de salas (Node.js) ◄──WebSocket── Tele / (diseño + puente)
-   micro + YIN                         /ws · /api/songs · /api/records            navegador de la tele
+ Móviles /m (web, PWA) ──WebSocket──► Servidor de salas (Node.js) ◄──WebSocket── Tele / (diseño+puente)
+  micro + YIN                          /ws · /api/songs · /api/records            navegador de la tele
 ```
 
 - **`diseno/`**: el diseño original de Gramola (prototipo interactivo de la tele, móvil, sistema y recursos). Es la referencia **1:1**.
