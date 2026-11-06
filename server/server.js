@@ -145,11 +145,61 @@ function scanSongs(force) {
   return out;
 }
 
-// ======================================================================= récords
+// ======================================================================= récords y JSONBin.io
 const RECORDS_FILE = path.join(DATA_DIR, 'records.json');
-let records = { songs: {}, singers: {}, plays: {}, ...leerJson(RECORDS_FILE, {}) };
 
-function saveRecords() { writeAtomic(RECORDS_FILE, JSON.stringify(records)); }
+// --- CONFIGURACIÓN DE JSONBIN.IO ---
+const JSONBIN_BIN_ID = process.env.JSONBIN_BIN_ID;
+const JSONBIN_MASTER_KEY = process.env.JSONBIN_MASTER_KEY;
+const JSONBIN_API_URL = JSONBIN_BIN_ID ? `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}` : null;
+
+let records = { songs: {}, singers: {}, plays: {} };
+
+// Carga inicial de los récords
+async function loadRecords() {
+  if (JSONBIN_API_URL && JSONBIN_MASTER_KEY) {
+    try {
+      console.log('Cargando récords desde JSONBin.io...');
+      const res = await fetch(`${JSONBIN_API_URL}/latest`, {
+        headers: { 'X-Master-Key': JSONBIN_MASTER_KEY, 'X-Bin-Meta': 'false' }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        records = { ...records, ...data };
+        console.log('Récords cargados correctamente desde JSONBin.io');
+        return;
+      }
+      console.error('Error al cargar de JSONBin.io:', res.status, await res.text());
+    } catch (e) {
+      console.error('Fallo de red al cargar de JSONBin.io:', e.message);
+    }
+  }
+  // Fallback: cargar del archivo local si falla JSONBin o no está configurado
+  records = { songs: {}, singers: {}, plays: {}, ...leerJson(RECORDS_FILE, {}) };
+}
+
+async function saveRecords() {
+  if (JSONBIN_API_URL && JSONBIN_MASTER_KEY) {
+    try {
+      const res = await fetch(JSONBIN_API_URL, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Master-Key': JSONBIN_MASTER_KEY
+        },
+        body: JSON.stringify(records)
+      });
+      if (!res.ok) console.error('Error al guardar en JSONBin.io:', res.status, await res.text());
+    } catch (e) {
+      console.error('Fallo de red al guardar en JSONBin.io:', e.message);
+      // Guardar en local como respaldo si falla la red
+      try { writeAtomic(RECORDS_FILE, JSON.stringify(records)); } catch {}
+    }
+  } else {
+    // Guardar en local si no hay configuración de JSONBin
+    try { writeAtomic(RECORDS_FILE, JSON.stringify(records)); } catch {}
+  }
+}
 
 // Texto de usuario: sin caracteres de control ni invisibles (anchura cero, marcas de dirección bidi: un nombre que
 // parece vacío o que se escribe al revés), recortado
@@ -158,7 +208,7 @@ const own = (o, k) => Object.prototype.hasOwnProperty.call(o, k);   // (un canta
 // Carpeta de canción tal cual (sin quitar invisibles: alguna carpeta creada desde Spotify los lleva y tiene que coincidir)
 const songKey = s => String(s || '').replace(/[\u0000-\u001f]/g, '').slice(0, 200);
 
-function addRecord(body) {
+async function addRecord(body) {
   const songId = clean(body.song, 200);
   if (!songId || !Array.isArray(body.players)) return null;
   const now = new Date().toISOString().slice(0, 10);
@@ -182,7 +232,7 @@ function addRecord(body) {
       if (score > 0) isNew = true;
     }
   }
-  saveRecords();
+  await saveRecords();
   return { isNew, previous: best, record: records.songs[songId] };
 }
 
@@ -462,7 +512,7 @@ if (!MICRO_HOST.test(host) && (url.pathname === '/m' || url.pathname.startsWith(
       vistos.push(`${pl.name} ${v.score}${v.score !== Math.round(+p.score || 0) ? ` (la tele decía ${Math.round(+p.score || 0)}, visto ${v.visto.score})` : ''}`);
     }
     let r;
-    try { r = addRecord({ song: songId, title: entry.title, artist: entry.artist, players }); }
+    try { r = await addRecord({ song: songId, title: entry.title, artist: entry.artist, players }); }
     catch (e) { console.error('records:', e.message); return json(res, 500, { error: 'guardar' }); }   // (disco lleno: se puede reintentar)
     sg.saved = true;
     if (r) {
@@ -787,6 +837,10 @@ function salir() {
 }
 process.on('SIGTERM', salir);
 process.on('SIGINT', salir);
-restoreRooms();
 
-server.listen(PORT, HOST, () => console.log(`gramola: escuchando en ${HOST}:${server.address().port}, canciones en ${SONGS_DIR}`));
+// Arranque modificado: esperamos a que se carguen los récords antes de empezar a escuchar
+(async () => {
+  await loadRecords();
+  restoreRooms();
+  server.listen(PORT, HOST, () => console.log(`gramola: escuchando en ${HOST}:${server.address().port}, canciones en ${SONGS_DIR}`));
+})();
