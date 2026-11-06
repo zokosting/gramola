@@ -1,10 +1,7 @@
 # Canciones (formato UltraStar)
 
 Gramola lee el formato de texto **UltraStar**, abierto y muy extendido. Cada canción es una carpeta dentro de
-`web/songs/` (o de la ruta indicada en `SONGS_DIR`) con un `.txt` y su audio.
-
-> El repositorio **no incluye canciones con derechos**. Usa solo canciones que tengas derecho a usar (creadas por ti,
-> con licencia libre o para uso privado según la ley de tu país).
+`web/songs/` (o de la ruta indicada en `SONGS_DIR`) con un `.txt` y su audio. Para uso privado.
 
 ## Cabeceras
 

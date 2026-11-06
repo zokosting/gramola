@@ -11,13 +11,11 @@
 La tele es el escenario (**funciona en el navegador**) y cada móvil es un micrófono:
 escaneas el QR, eliges tu color y cantas. Gramola escucha el tono de cada voz y puntúa lo afinado que vas.
 
-![Versión](https://img.shields.io/badge/versi%C3%B3n-1.26.1103.1347-ec3013)
-![Navegador](https://img.shields.io/badge/navegador-Edge%20%C2%B7%20Chrome%20%C2%B7%20Safari-1f6feb)
+![Versión](https://img.shields.io/badge/versi%C3%B3n-1.26.1104.2029-ec3013)
 ![PWA](https://img.shields.io/badge/micro-web%20%2B%20PWA-ec3013)
 ![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-5fa04e?logo=nodedotjs&logoColor=white)
 ![UltraStar](https://img.shields.io/badge/canciones-formato%20UltraStar-201e1d)
-![Hasta 8 jugadores](https://img.shields.io/badge/jugadores-hasta%208-F2C230)
-
+![GitHub forks](https://img.shields.io/github/forks/nuvolacat/Gramola.link)
 <br>
 
 <p>
@@ -83,9 +81,7 @@ escaneas el QR, eliges tu color y cantas. Gramola escucha el tono de cada voz y 
 
 ## 📱 El micro (PWA)
 
-- El micro **solo funciona con la app instalada** (PWA: «Añadir a pantalla de inicio»), que abre a pantalla completa. En el
-  navegador, el QR del subdominio `micro.` solo muestra cómo instalarla (con los pasos de Safari en iPhone) y el código
-  de la sala, para entrar desde la app escaneando otra vez o escribiéndolo. Dentro de la app se escanea el QR de la tele.
+- El micro **solo funciona con la app instalada** (PWA: «Añadir a pantalla de inicio»), que abre a pantalla completa. En el navegador, el QR solo muestra cómo instalarla y el código de la sala, para entrar desde la app escaneando otra vez o escribiéndolo. Dentro de la app se escanea el QR de la tele.
 - Al reabrir la app durante una partida (los móviles a veces la cierran en segundo plano) vuelve a su sala con su color.
 - Sin copiar contenido: ni selección de texto ni menú de pulsación larga (salvo en los campos para escribir).
 - **El tono se calcula en el propio móvil** (YIN) y solo viajan unos bytes 25 veces por segundo.
@@ -112,26 +108,15 @@ escaneas el QR, eliges tu color y cantas. Gramola escucha el tono de cada voz y 
 | Dirección | Qué es |
 |---|---|
 | `/` | Web informativa (qué es, cómo se juega, modos y capturas). |
-| subdominio `micro.` | El micro (adonde lleva el QR de la tele); se puede instalar como app. |
+| `/m` | El micro (adonde lleva el QR de la tele); se puede instalar como app. |
 | `/app` | La interfaz de la tele, a pantalla completa en el navegador. |
 
 Más detalle en **[docs/ARQUITECTURA.md](docs/ARQUITECTURA.md)**, **[docs/PROTOCOLO.md](docs/PROTOCOLO.md)** y **[docs/PUNTUACION.md](docs/PUNTUACION.md)**.
 
-## 🚀 Ponerlo en marcha
-
-```bash
-cd server && npm install && npm start      # http://localhost:8877  (tele en /app)
-cd server && npm test                      # pruebas del servidor (salas, permisos, peticiones raras)
-python3 tools/build-tv.py                  # solo si cambia el diseño
-```
-
-Para jugar con móviles hace falta **HTTPS** (los navegadores solo dejan usar el micro en páginas seguras).
-Guía de servidor (Plesk/Apache, systemd, Cloudflare) en **[docs/INSTALACION.md](docs/INSTALACION.md)**.
-
 ## 🎵 Canciones
 
 Formato abierto **UltraStar** (`.txt` + audio y portada, sin vídeo), una carpeta por canción en `web/songs/` del servidor.
-Las canciones **no están en el repositorio**. Para añadir un lote:
+Para añadir un lote **con el portal de Administración**:
 
 | Paso | Herramienta | Qué hace |
 |---|---|---|
@@ -154,7 +139,7 @@ ficheros, subir canciones nuevas, retirar), un **editor de canciones** por frase
 **creación de canciones** a partir del audio (o importando una canción de Spotify) y la letra (con búsqueda automática en LRCLIB y Genius) (separación de voz, alineación y tono en un servicio del propio servidor), récords, actividad, estadísticas por día y estado del servidor.
 Detalles en **[docs/ADMIN.md](docs/ADMIN.md)**.
 
-Novedades de cada versión en **[CHANGELOG.md](CHANGELOG.md)**.
+Modificado para uso privado **v 1.26.1104.2029**.
 
 ---
 

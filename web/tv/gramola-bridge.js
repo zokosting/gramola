@@ -760,7 +760,7 @@ window.GR = (() => {
     ['Infraestructura', [
       'Alojado originalmente en Ubuntu con Apache y Plesk, detrás de Cloudflare, con certificados de Let’s Encrypt.',
     ]],
-    ['Micro v 1.26.1104.2029', [
+    ['App v 1.26.1104.2029', [
       'Adaptaciones personales para uso propio.',
     ]],
   ];
