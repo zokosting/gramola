@@ -208,7 +208,7 @@ function send(ws, msg) {
 function playerList(room) {
   return [...room.players.values()]
     .sort((a, b) => a.slot - b.slot)
-    .map(p => ({ id: p.id, slot: p.slot, name: p.name, color: COLORS[p.slot - 1], online: p.bot || !!p.ws, bot: !!p.bot }));
+    .map(p => ({ id: p.id, num: p.num, slot: p.slot, name: p.name, color: COLORS[p.slot - 1], online: p.bot || !!p.ws, bot: !!p.bot }));
 }
 
 function takenSlots(room, exceptId) {
@@ -234,7 +234,7 @@ function createRoom(hostWs) {
   if (rooms.size >= MAX_ROOMS) return null;
   const code = newCode();
   if (!code) return null;
-  const room = { code, hostToken: crypto.randomUUID(), host: hostWs, players: new Map(), nextId: 1, state: null, emptySince: null, createdAt: Date.now(), hostInfo: hostWs && hostWs.info };
+  const room = { code, hostToken: crypto.randomUUID(), host: hostWs, players: new Map(), nextId: 1, nextNum: 1, state: null, emptySince: null, createdAt: Date.now(), hostInfo: hostWs && hostWs.info };
   rooms.set(room.code, room);
   admin.count('rooms');
   admin.ev('room', `Sala ${room.code} abierta`, { room: room.code, ...(hostWs && hostWs.info ? { country: hostWs.info.country } : {}) });
@@ -273,8 +273,8 @@ function bloqueado(ip) { const f = fallos.get(ip); return !!f && Date.now() - f.
 const ROOMS_FILE = path.join(DATA_DIR, 'salas.json');
 function saveRooms() {
   const l = [...rooms.values()].filter(r => !r.closed).map(r => ({
-    code: r.code, hostToken: r.hostToken, nextId: r.nextId, createdAt: r.createdAt,
-    players: [...r.players.values()].map(p => ({ id: p.id, token: p.token, name: p.name, slot: p.slot, bot: !!p.bot })),
+    code: r.code, hostToken: r.hostToken, nextId: r.nextId, nextNum: r.nextNum || 1, createdAt: r.createdAt,
+    players: [...r.players.values()].map(p => ({ id: p.id, num: p.num, token: p.token, name: p.name, slot: p.slot, bot: !!p.bot })),
   }));
   writeAtomic(ROOMS_FILE, JSON.stringify({ at: Date.now(), rooms: l }));
 }
@@ -285,10 +285,13 @@ function restoreRooms() {
   let n = 0;
   for (const r of d.rooms) {
     if (!/^[A-Z]{4}$/.test(String(r.code)) || rooms.has(r.code) || typeof r.hostToken !== 'string') continue;
-    const room = { code: r.code, hostToken: r.hostToken, host: null, players: new Map(), nextId: +r.nextId || 1, state: null, emptySince: Date.now(), createdAt: +r.createdAt || Date.now(), hostInfo: null };
+    const room = { code: r.code, hostToken: r.hostToken, host: null, players: new Map(), nextId: +r.nextId || 1, nextNum: +r.nextNum || 1, state: null, emptySince: Date.now(), createdAt: +r.createdAt || Date.now(), hostInfo: null };
     for (const p of (Array.isArray(r.players) ? r.players : []).slice(0, MAX_PLAYERS)) {
       if (!p || typeof p.token !== 'string') continue;
-      room.players.set(+p.id, { id: +p.id, token: p.token, name: clean(p.name, 16) || 'Cantante', slot: Math.max(1, Math.min(MAX_PLAYERS, +p.slot || 1)), ws: null, bot: !!p.bot, offlineAt: Date.now() });
+      let pNum = +p.num || 0;
+      // Si es un guardado antiguo sin num, le asignamos uno
+      if (!pNum) pNum = room.nextNum++;
+      room.players.set(+p.id, { id: +p.id, num: pNum, token: p.token, name: clean(p.name, 16) || 'Cantante', slot: Math.max(1, Math.min(MAX_PLAYERS, +p.slot || 1)), ws: null, bot: !!p.bot, offlineAt: Date.now() });
     }
     rooms.set(room.code, room); n++;
   }
@@ -653,13 +656,14 @@ wss.on('connection', (ws, req) => {
           if (player.ws && player.ws !== ws) { send(player.ws, { type: 'replaced' }); player.ws.close(); }
           Object.assign(player, { ws, name, slot, offlineAt: null });
         } else {
-          player = { id: room.nextId++, token: crypto.randomUUID(), name, slot, ws, joinedAt: Date.now(), info: ws.info };
+          // Se crea un jugador nuevo y se le asigna el número de llegada
+          player = { id: room.nextId++, num: room.nextNum++, token: crypto.randomUUID(), name, slot, ws, joinedAt: Date.now(), info: ws.info };
           room.players.set(player.id, player);
           admin.count('joins');
           admin.ev('player', `${name} entra en la sala ${room.code}`, { room: room.code });
         }
         role = 'player';
-        send(ws, { type: 'joined', id: player.id, slot: player.slot, token: player.token, name: player.name, color: COLORS[player.slot - 1], code: room.code, hostOnline: !!room.host });
+        send(ws, { type: 'joined', id: player.id, num: player.num, slot: player.slot, token: player.token, name: player.name, color: COLORS[player.slot - 1], code: room.code, hostOnline: !!room.host });
         if (room.state) send(ws, room.state);
         announce(room);
         return;
@@ -727,7 +731,7 @@ wss.on('connection', (ws, req) => {
         const slot = freeSlot(room);
         if (!slot) return send(ws, { type: 'error', code: 'full', msg: 'La sala está llena' });
         const names = ['Robo', 'Eco', 'Bip', 'Tono', 'Lila', 'Dino', 'Kiko', 'Nube'];
-        const p = { id: room.nextId++, token: crypto.randomUUID(), name: names[slot - 1], slot, ws: null, bot: true };
+        const p = { id: room.nextId++, num: room.nextNum++, token: crypto.randomUUID(), name: names[slot - 1], slot, ws: null, bot: true };
         room.players.set(p.id, p);
         return announce(room);
       }

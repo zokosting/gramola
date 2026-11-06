@@ -119,7 +119,7 @@ function onMessage(m) {
     LS.set('g-code', m.code);
     LS.set('g-when', String(Date.now()));
     document.documentElement.style.setProperty('--me', m.color);
-    ['badge-wait', 'badge-sing'].forEach(id => ($(id).textContent = 'J' + m.slot));
+    ['badge-wait', 'badge-sing'].forEach(id => ($(id).textContent = 'J' + (m.num || m.slot)));
     $('who-wait').textContent = `${m.name} · Sala ${m.code}`;
     setMicImage(m.slot);
     // A partir de ahora, si se corta la red, volvemos a entrar con el mismo color
