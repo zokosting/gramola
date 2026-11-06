@@ -588,6 +588,7 @@ photoPreview();
 // document.querySelectorAll('.g-host').forEach(e => (e.textContent = location.host));
 document.querySelectorAll('.g-host').forEach(e => (e.textContent = 'zokosting.github.io/gramola'));
 
+
 // ---------------------------------------------------------------- giro: en horizontal, el micro se dibuja como en vertical
 (function () {
   const S = window.screen, root = document.documentElement;
