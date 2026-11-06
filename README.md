@@ -15,7 +15,7 @@ escaneas el QR, eliges tu color y cantas. Gramola escucha el tono de cada voz y 
 ![PWA](https://img.shields.io/badge/micro-web%20%2B%20PWA-ec3013)
 ![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-5fa04e?logo=nodedotjs&logoColor=white)
 ![UltraStar](https://img.shields.io/badge/canciones-formato%20UltraStar-201e1d)
-![GitHub forks](https://img.shields.io/github/forks/nuvolacat/Gramola.link)
+![Fork de](https://img.shields.io/badge/fork_de-nuvolacat%2FGramola.link-ec3013?logo=github&logoColor=white)
 <br>
 
 <p>
