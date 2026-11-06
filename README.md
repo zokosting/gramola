@@ -12,9 +12,9 @@ La tele es el escenario (**funciona en el navegador**) y cada móvil es un micr�
 escaneas el QR, eliges tu color y cantas. Gramola escucha el tono de cada voz y puntúa lo afinado que vas.
 
 ![Versión](https://img.shields.io/badge/versi%C3%B3n-1.26.1104.2029-ec3013)
-![PWA](https://img.shields.io/badge/micro-web%20%2B%20PWA-ec3013)
 ![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-5fa04e?logo=nodedotjs&logoColor=white)
 ![UltraStar](https://img.shields.io/badge/canciones-formato%20UltraStar-201e1d)
+[![UltraSinger](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/gist/zokosting/6a0b7c6ebfd95c57e209838435c72ef1/ultrasinger.ipynb)
 ![Fork de](https://img.shields.io/badge/fork_de-nuvolacat%2FGramola.link-ec3013?logo=github&logoColor=white)
 <br>
 
@@ -120,7 +120,6 @@ Más detalle en **[docs/ARQUITECTURA.md](docs/ARQUITECTURA.md)**, **[docs/PROTOC
 ## 🎵 Canciones
 
 Formato abierto **UltraStar** (`.txt` + audio y portada, sin vídeo), una carpeta por canción en `web/songs/` del servidor.
-[![UltraSinger](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/gist/zokosting/a7c85a7e0daa8729b94781bb151972c0/ultrasinger.ipynb)
 Para añadir un lote **con el portal de Administración**:
 
 | Paso | Herramienta | Qué hace |
