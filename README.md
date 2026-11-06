@@ -111,6 +111,10 @@ escaneas el QR, eliges tu color y cantas. Gramola escucha el tono de cada voz y 
 | `/m` | El micro (adonde lleva el QR de la tele); se puede instalar como app. |
 | `/app` | La interfaz de la tele, a pantalla completa en el navegador. |
 
+```
+Render + JSONBin
+```
+
 Más detalle en **[docs/ARQUITECTURA.md](docs/ARQUITECTURA.md)**, **[docs/PROTOCOLO.md](docs/PROTOCOLO.md)** y **[docs/PUNTUACION.md](docs/PUNTUACION.md)**.
 
 ## 🎵 Canciones
