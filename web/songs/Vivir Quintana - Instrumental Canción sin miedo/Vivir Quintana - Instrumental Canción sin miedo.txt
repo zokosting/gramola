@@ -1,14 +1,14 @@
 #VERSION:1.2.0
-#ARTIST:Vivir Quintana
+#ARTIST:Vivir Quintana & Mon Laferte
 #TITLE:Canción sin miedo
 #YEAR:2020
 #LANGUAGE:Spanish
-#COVER:Vivir Quintana - Canción sin miedo [CO].jpg
+#COVER:Vivir Quintana - Instrumental Canción sin miedo.jpg
 #COVERURL:http://coverartarchive.org/release/f65a3050-7da1-4549-89e8-52189c278097/30584588996.jpg
-#MP3:Vivir Quintana - Canción sin miedo.wav
-#AUDIO:Vivir Quintana - Canción sin miedo.wav
-#VOCALS:Vivir Quintana - Canción sin miedo [Vocals].wav
-#INSTRUMENTAL:Vivir Quintana - Canción sin miedo [Instrumental].wav
+#MP3:Vivir Quintana - Instrumental Canción sin miedo.mp3
+#AUDIO:Vivir Quintana - Instrumental Canción sin miedo.mp3
+#VOCALS:Vivir Quintana - Instrumental Canción sin miedo.mp3
+#INSTRUMENTAL:Vivir Quintana - Instrumental Canción sin miedo.mp3
 #BPM:393.22
 #GAP:12757
 #TAGS:key: C# minor

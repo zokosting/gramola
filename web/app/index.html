@@ -214,7 +214,15 @@ a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}
       <div style="padding:20px 24px 0 0;display:flex;flex-direction:column;min-width:0"><span style="font-size:{{ cur.tfs }}px;height:56px;display:flex;align-items:flex-end;font-weight:800;line-height:1;letter-spacing:-0.02em;white-space:nowrap;overflow:hidden">{{ cur.title }}</span><span style="font-size:32px;color:var(--color-neutral-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cur.artist }}</span></div>
       <div style="padding:20px 24px 0;border-left:2px solid var(--color-text);display:flex;flex-direction:column;gap:4px"><span style="font-size:28px;color:var(--color-neutral-700)">Idioma</span><span style="font-size:36px;font-weight:800">{{ cur.lang }}</span></div>
       <div style="padding:20px 24px 0;border-left:2px solid var(--color-text);display:flex;flex-direction:column;gap:4px"><span style="font-size:28px;color:var(--color-neutral-700)">Dificultad</span><div style="display:flex;gap:6px;height:36px;align-items:center"><sc-for list="{{ cur.diff }}" as="d" hint-placeholder-count="3"><div style="width:28px;height:28px;background:{{ d.c }}"></div></sc-for></div></div>
-      <div style="padding:20px 0 0 24px;border-left:2px solid var(--color-text);display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:28px;color:var(--color-neutral-700)">Récord</span><span style="font-size:36px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cur.record }}</span></div>
+      <div style="padding:20px 0 0 24px;border-left:2px solid var(--color-text);display:flex;flex-direction:column;gap:4px;min-width:0">
+  <span style="font-size:28px;color:var(--color-neutral-700)">Récord</span>
+  <span style="font-size:36px;white-space:nowrap;overflow:hidden;display:flex;align-items:baseline;">
+    <span style="font-weight:800;flex-shrink:0;">{{ cur.recordScore }}</span>
+    <sc-if value="{{ cur.recordName }}">
+      <span style="font-weight:400;font-size:26px;color:var(--color-neutral-700);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-left:8px;">· {{ cur.recordName }}</span>
+    </sc-if>
+  </span>
+</div>
     </div>
   </sc-if>
   <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
@@ -1098,7 +1106,11 @@ class Component extends DCLogic {
     const CW=[440,280,200,150],CO=[0,400,660,860],COP=[1,0.9,0.7,0.45];
     const covers=[],_coversNo=((so,i)=>{const d=i-sf,ad=Math.min(Math.abs(d),4),on=d===0,gz=s.zone==='grid';const w=CW[Math.min(ad,3)],off=ad>3?1000:CO[ad];return {left:Math.round(960+Math.sign(d)*off-w/2),w,mt:-Math.round(w/2),op:ad>3?0:COP[ad],z:10-ad,s:on&&gz?SHADOW:'none',ol:on&&gz?'6px solid #ec3013':'0 solid transparent',bg:so.cv[0],blk:so.cv[1],fg:so.cv[2],ini:ini(so.title),fs:Math.round(w*0.24),duo:so.duo,click:()=>{if(on&&s.zone==='grid')this.startSetup();else this.setState({songF:i,zone:'grid'});}};});
     const cs=s.screen==='songs'?(list[sf]||SONGS[0]):(GR.megaCard(s)||SONGS[s.songSel]||SONGS[0]);
-    const cur={tfs:GR.fitTitle(cs.title),title:cs.title,artist:cs.artist,durYear:cs.dur+' · '+cs.year,lang:cs.lang+(cs.duo?' · Dúo':''),diff:[1,2,3].map(k=>({c:k<=cs.diff?C.ink:C.n3})),record:cs.rec,bg:cs.cv[0],blk:cs.cv[1],fg:cs.cv[2],ini:ini(cs.title)};
+    const recStr = cs.rec || '—';
+const recParts = recStr.split(' · ');
+const recordScore = recParts[0];
+const recordName = recParts.length > 1 ? recParts.slice(1).join(' · ') : '';
+const cur={tfs:GR.fitTitle(cs.title),title:cs.title,artist:cs.artist,durYear:cs.dur+' · '+cs.year,lang:cs.lang+(cs.duo?' · Dúo':''),diff:[1,2,3].map(k=>({c:k<=cs.diff?C.ink:C.n3})),recordScore:recordScore,recordName:recordName,bg:cs.cv[0],blk:cs.cv[1],fg:cs.cv[2],ini:ini(cs.title)};
     const N=s.setup.length;
     const tog=s.mode==='sing';const setupRows=s.setup.map((r,i)=>{const P=PLAYERS[i],on=s.setupF===i,off=this.isOff(i);return {isToggle:tog,isSide:!tog,sides:['1','—','2'].map((label,j)=>({label,br:j<2?'2px solid '+C.ink:'none',bg:r.side===j?(on?C.red:C.ink):'transparent',fg:r.side===j?'#fff':C.ink})),name:P[0],color:P[1],shape:P[2],op:off?0.4:1,bg:on?'#fff':'transparent',s:on?'inset 0 0 0 4px '+C.red:'none',chk:r.on&&!off?C.ink:'transparent',onText:off?'Sin micro':r.on?'Sí':'No',
       diffs:DIFFS.map((d,j)=>({label:d[0],br:j<2?'2px solid '+C.ink:'none',bg:r.diff===j?(on?C.red:C.ink):'transparent',fg:r.diff===j?'#fff':C.ink})),click:()=>{if(s.setupF===i)this.setupToggle(i);else this.setState({setupF:i});}};});

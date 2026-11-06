@@ -94,8 +94,8 @@ escaneas el QR, eliges tu color y cantas. Gramola escucha el tono de cada voz y 
 ## 🧱 Cómo está hecho
 
 ```
- Móviles /m (web, PWA)  ──WebSocket──►  Servidor de salas (Node.js)  ◄──WebSocket──  Tele / (diseño + puente)
-   micro + YIN                           /ws · /api/songs · /api/records                 navegador de la tele
+ Móviles /m (web, PWA) ──WebSocket──► Servidor de salas (Node.js) ◄──WebSocket── Tele / (diseño + puente)
+   micro + YIN                         /ws · /api/songs · /api/records            navegador de la tele
 ```
 
 - **`diseno/`**: el diseño original de Gramola (prototipo interactivo de la tele, móvil, sistema y recursos). Es la referencia **1:1**.
@@ -120,6 +120,7 @@ Más detalle en **[docs/ARQUITECTURA.md](docs/ARQUITECTURA.md)**, **[docs/PROTOC
 ## 🎵 Canciones
 
 Formato abierto **UltraStar** (`.txt` + audio y portada, sin vídeo), una carpeta por canción en `web/songs/` del servidor.
+[![UltraSinger](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/gist/zokosting/a7c85a7e0daa8729b94781bb151972c0/ultrasinger.ipynb)
 Para añadir un lote **con el portal de Administración**:
 
 | Paso | Herramienta | Qué hace |
