@@ -2,7 +2,7 @@
 #TITLE:Los restos del naufragio
 #MP3:Bunbury - Los restos del naufragio.mp3
 #CREATOR:Hanso
-#COVER:Bunbury - Los restos del naufragio.jpg
+#COVER:Bunbury - Los restos del naufragio.jpeg
 #YEAR:2004
 #LANGUAGE:Spanish
 #BPM:388
