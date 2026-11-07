@@ -2,11 +2,12 @@
 #TITLE:Sin documentos
 #MP3:Los Rodríguez - Sin documentos.mp3
 #CREATOR:Canni
+#COVER:Los Rodríguez - Sin documentos.jpg
 #EDITION:SingStar [ES]
 #YEAR:1993
 #LANGUAGE:Spanish
 #BPM:384.8
-#GAP:33590
+#GAP:32250
 #VIDEO:v=BUKHMGiW_rY,co=sin-documentos-5ff91bd652ed9.jpg,bg=rodrguez-los-5ffa6994df0e9.jpg
 : 0 6 14 Dé
 : 8 4 14 ja

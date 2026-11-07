@@ -2,10 +2,11 @@
 #TITLE:Los restos del naufragio
 #MP3:Bunbury - Los restos del naufragio.mp3
 #CREATOR:Hanso
+#COVER:Bunbury - Los restos del naufragio.jpg
 #YEAR:2004
 #LANGUAGE:Spanish
 #BPM:388
-#GAP:2670
+#GAP:40
 #VIDEO:v=QObX9sq_R8M,co=https://m.media-amazon.com/images/I/61T1BA9G6YL.jpg,bg=bunbury-4e32c0ca2410e.jpg
 : 0 15 6 Los 
 : 16 23 7 restos 

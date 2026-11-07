@@ -1,4 +1,4 @@
-#TITLE:[Instrumental] Canción Sin Miedo
+#TITLE:Instrumental Canción Sin Miedo
 #ARTIST:Vivir Quintana
 #MP3:Vivir Quintana - Instrumental Canción sin miedo.mp3
 #BPM:140

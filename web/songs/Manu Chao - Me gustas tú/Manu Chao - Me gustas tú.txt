@@ -2,6 +2,7 @@
 #TITLE:Me gustas tú
 #MP3:Manu Chao - Me gustas tú.mp3
 #CREATOR:Artax1979
+#COVER:Manu Chao - Me gustas tú.jpg
 #YEAR:2001
 #LANGUAGE:Spanish
 #BPM:352

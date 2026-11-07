@@ -2,10 +2,11 @@
 #TITLE:La Flaca
 #MP3:Jarabe de Palo - La Flaca.mp3
 #CREATOR:general2000
+#COVER:Jarabe de Palo - La Flaca.jpg
 #YEAR:1996
 #LANGUAGE:Spanish
 #BPM:300
-#GAP:21630
+#GAP:15480
 #VIDEO:v=r2g0pM3PMNQ,co=la-flaca-5c24fbe41ef3e.jpg,bg=jarabe-de-palo-4fdae72a4e593.jpg
 #START:6.0
 : 0 5 21 En 
