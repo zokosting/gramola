@@ -2,6 +2,7 @@
 #TITLE:Across The Universe
 #MP3:The Beatles - Across The Universe.mp3
 #CREATOR:RetroGirl
+#COVER:The Beatles - Across The Universe.jpg
 #GENRE:Psych Folk
 #YEAR:1969
 #LANGUAGE:English

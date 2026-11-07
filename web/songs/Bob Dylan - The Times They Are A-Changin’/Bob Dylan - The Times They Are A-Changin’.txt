@@ -2,6 +2,7 @@
 #TITLE:The Times They Are A-Changin’
 #MP3:Bob Dylan - The Times They Are A-Changin’.mp3
 #CREATOR:Dummbatzen
+#COVER:Bob Dylan - The Times They Are A-Changin’.jpg
 #GENRE:Folk
 #YEAR:1964
 #LANGUAGE:English

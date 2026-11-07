@@ -2,6 +2,7 @@
 #TITLE:Revolution
 #MP3:The Beatles - Revolution.mp3
 #CREATOR:Eggman
+#COVER:The Beatles - Revolution.jpg
 #GENRE:Rock
 #YEAR:1968
 #LANGUAGE:English

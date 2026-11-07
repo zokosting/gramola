@@ -2,6 +2,7 @@
 #TITLE:Hey Jude
 #MP3:The Beatles - Hey Jude.mp3
 #CREATOR:Hammy
+#COVER:The Beatles - Hey Jude.jpg
 #YEAR:1968
 #LANGUAGE:English
 #BPM:301.7

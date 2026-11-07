@@ -2,6 +2,7 @@
 #TITLE:Strawberry Fields Forever
 #MP3:The Beatles - Strawberry Fields Forever.mp3
 #CREATOR:IC
+#COVER:The Beatles - Strawberry Fields Forever.jpg
 #EDITION:[SC]-Songs
 #YEAR:1967
 #LANGUAGE:English

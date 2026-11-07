@@ -2,6 +2,7 @@
 #TITLE:Lucy In The Sky With Diamonds
 #MP3:The Beatles - Lucy In The Sky With Diamonds.mp3
 #CREATOR:silbersamt
+#COVER:The Beatles - Lucy In The Sky With Diamonds.jpg
 #YEAR:1967
 #LANGUAGE:English
 #BPM:240
