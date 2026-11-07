@@ -1,5 +1,5 @@
 #TITLE:Canción Sin Miedo
-#ARTIST:Vivir Quintana
+#ARTIST:Vivir Quintana & Mon Laferte
 #MP3:Vivir Quintana - Canción Sin Miedo.mp3
 #BPM:140
 #GAP:12500
