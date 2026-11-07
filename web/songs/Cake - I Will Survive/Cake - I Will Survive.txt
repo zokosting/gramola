@@ -2,12 +2,13 @@
 #TITLE:I Will Survive
 #MP3:Cake - I Will Survive.mp3
 #CREATOR:Gollum
+#COVER:Cake - I Will Survive.jpg
 #EDITION:Rock Band Store 2017
 #GENRE:Rock
 #YEAR:1996
 #LANGUAGE:English
 #BPM:395.05
-#GAP:11320
+#GAP:20530
 #VIDEO:v=f9rCUQjmkxU,co=https://i.discogs.com/VW4cIod53ivU33r9jnGWaetIGZ3BY-EDk2aRUnSyDp0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEwMzA4/MzYtMTMxMDU1NDg4/Ni5qcGVn.jpeg,bg=cake-4e60300c6890f.jpg,preview=11.0,tags=explicit
 : 0 4 7 At
 : 5 2 9 ~ 
