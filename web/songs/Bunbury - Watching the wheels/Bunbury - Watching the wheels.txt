@@ -1,7 +1,7 @@
 #TITLE:Watching the Wheels
-#ARTIST:John Lennon
+#ARTIST:Bunbury
 #MP3:Bunbury - Watching the wheels.mp3
-#COVER:Bunbury - Watching the wheels.jpg
+#COVER:Bunbury - Watching the wheels.png
 #BPM:170
 #GAP:11510
 : 0 4 7 Peo-
