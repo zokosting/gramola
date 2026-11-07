@@ -1,12 +1,12 @@
-#TITLE:Canción Sin Miedo
+#TITLE:[Instrumental] Canción Sin Miedo
 #ARTIST:Vivir Quintana
-#MP3:Vivir Quintana - Canción Sin Miedo.mp3
+#MP3:Vivir Quintana - Instrumental Canción sin miedo.mp3
 #BPM:140
 #GAP:12500
 #LANGUAGE:Spanish
 #YEAR:2020
 #CREATOR:EREBOR
-#COVER:Vivir Quintana - Canción Sin Miedo.jpg
+#COVER:Vivir Quintana - Instrumental Canción sin miedo.jpg
 #
 : 0 2 60 Que
 : 2 2 60  tiem
