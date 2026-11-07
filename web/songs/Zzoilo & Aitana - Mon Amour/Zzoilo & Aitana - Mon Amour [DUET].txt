@@ -1,10 +1,10 @@
 #ARTIST:Zzoilo & Aitana
-#TITLE:Mon amour (Remix) [DUET]
-#MP3:Zzoilo & Aitana - Mon amour (Remix) [DUET].mp3
+#TITLE:Mon amour (Remix)
+#MP3:Zzoilo & Aitana - Mon Amour.mp3
 #CREATOR:Volodia
 #EDITION:[DUET]-Songs
-#COVER:Zzoilo & Aitana - Mon amour (Remix) [DUET] [CO].jpg
-#BACKGROUND:Zzoilo & Aitana - Mon amour (Remix) [DUET] [BG].jpg
+#COVER:Zzoilo & Aitana - Mon Amour.jpg
+#BACKGROUND:Zzoilo & Aitana - Mon Amour.jpg
 #GENRE:Pop, Rap
 #YEAR:2021
 #LANGUAGE:Spanish
