@@ -2,7 +2,7 @@
 #TITLE:Tengo que madurar
 #YEAR:2020
 #LANGUAGE:Spanish
-#COVER:O'funk'illo - Tengo que madurar.jpg
+#COVER:O'funk'illo - Tengo que madurar.jpeg
 #COVERURL:https://coverartarchive.org/release/615f0fab-c3d4-4cab-a9d9-532bcc80de0c/42175631456.jpg
 #MP3:O'funk'illo - Tengo que madurar.mp3
 #AUDIO:O'funk'illo - Tengo que madurar.mp3

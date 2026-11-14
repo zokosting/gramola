@@ -4,7 +4,7 @@
 #LANGUAGE:Spanish
 #MP3:Lapili - Fatty Fairy.mp3
 #AUDIO:Lapili - Fatty Fairy.mp3
-#COVER:Lapili - Fatty Fairy.JPG
+#COVER:Lapili - Fatty Fairy.jpg
 #BPM:387.6
 #GAP:385
 #TAGS:key: F# minor

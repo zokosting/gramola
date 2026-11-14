@@ -4,7 +4,7 @@
 #LANGUAGE:Spanish
 #MP3:Guerreras K-Pop - Golden.mp3
 #AUDIO:Guerreras K-Pop - Golden.mp3
-@COVER:Guerreras K-Pop - Golden.jpg
+#COVER:Guerreras K-Pop - Golden.jpg
 #BPM:399.9
 #GAP:257
 #TAGS:key: E minor
